@@ -28,6 +28,7 @@ router.post("/get-current-weather", function(req, res) {
         //console.log(chunk);
         let weather = JSON.parse(chunk);
         //console.log(weather);
+        /*
         let dataToSend =
           weather.name +
           "," +
@@ -48,10 +49,11 @@ router.post("/get-current-weather", function(req, res) {
           "%, " +
           weather.main.pressure +
           " hpa";
+          */
 
         return res.json({
-          speech: dataToSend,
-          displayText: dataToSend,
+          speech: weather,
+          displayText: weather,
           source: "get-current-weather"
         });
       });
