@@ -12,8 +12,8 @@ router.post("/get-current-weather", function(req, res) {
   let cityName =
     req.body.result &&
     req.body.result.parameters &&
-    req.body.result.parameters.city
-      ? req.body.result.parameters.city
+    req.body.result.parameters["geo-city"]
+      ? req.body.result.parameters["geo-city"]
       : "Madrid";
   let reqUrl = encodeURI(
     "http://api.openweathermap.org/data/2.5/weather?q=" +
