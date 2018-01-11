@@ -20,6 +20,7 @@ router.post("/get-current-weather", function(req, res) {
       cityName +
       "&APPID=f4c5f1b9615292aebad5c50aa10c0d14&units=metric"
   );
+
   http.get(
     reqUrl,
     responseFromAPI => {
@@ -34,10 +35,19 @@ router.post("/get-current-weather", function(req, res) {
           " " +
           weather.weather[0].description +
           weather.main.temp +
-          " °С from " +
+          " °С temperature from " +
           weather.main.temp_min +
           " to " +
-          weather.main.temp_max;
+          weather.main.temp_max +
+          ", wind " +
+          weather.wind.speed +
+          " m/s. " +
+          weather.weather[0].main.toLowerCase() +
+          " " +
+          weather.clouds.all +
+          "%, " +
+          weather.main.pressure +
+          " hpa";
 
         return res.json({
           speech: dataToSend,
