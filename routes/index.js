@@ -48,7 +48,11 @@ router.post("/get-current-weather", function(req, res) {
         return res.json({
           speech: dataToSend,
           displayText: dataToSend,
-          source: "get-current-weather"
+          source: "get-current-weather",
+          iconURL:
+            "http://openweathermap.org/img/w/" +
+            weather.weather[0].icon +
+            ".png"
         });
       });
     },
@@ -56,7 +60,8 @@ router.post("/get-current-weather", function(req, res) {
       return res.json({
         speech: "Something went wrong!",
         displayText: "Something went wrong!",
-        source: "get-current-weather"
+        source: "get-current-weather",
+        iconURL: ""
       });
     }
   );
