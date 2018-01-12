@@ -34,6 +34,7 @@ router.post("/get-current-weather", function(req, res) {
           weather.sys.country +
           " " +
           weather.weather[0].description +
+          " " +
           weather.main.temp +
           " °С temperature from " +
           weather.main.temp_min +
