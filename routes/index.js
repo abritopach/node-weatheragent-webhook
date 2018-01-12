@@ -28,14 +28,16 @@ router.post("/get-current-weather", function(req, res) {
         //console.log(chunk);
         let weather = JSON.parse(chunk);
         //console.log(weather);
-        let dataToSend =
+        let firstLine =
           weather.name +
           "," +
           weather.sys.country +
           " " +
           weather.weather[0].description +
+          "/n";
+        let secondLine =
           weather.main.temp +
-          " °С temperature from " +
+          "°С temperature from " +
           weather.main.temp_min +
           " to " +
           weather.main.temp_max +
@@ -44,6 +46,7 @@ router.post("/get-current-weather", function(req, res) {
           " m/s. " +
           weather.main.pressure +
           " hpa";
+        let dataToSend = firstLine + secondLine;
 
         return res.json({
           speech: dataToSend,
