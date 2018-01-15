@@ -9,6 +9,7 @@ router.get("/", function(req, res, next) {
 
 /* POST current weather */
 router.post("/get-current-weather", function(req, res) {
+  let apiKey = process.env.APIKEY;
   let cityName =
     req.body.result &&
     req.body.result.parameters &&
@@ -18,7 +19,7 @@ router.post("/get-current-weather", function(req, res) {
   let reqUrl = encodeURI(
     "http://api.openweathermap.org/data/2.5/weather?q=" +
       cityName +
-      "&APPID=f4c5f1b9615292aebad5c50aa10c0d14&units=metric"
+      "&APPID=" + apiKey + "&units=metric"
   );
 
   http.get(
